@@ -1,4 +1,4 @@
-# kubeflow_local_dep
+# Local deployment of KubeFlow Pipelines
 Resource for local deployment of kubeflow piplelines on WSL using k3s as the base
 ---------------------------------------------------------------------------
 The repository was written following a combination of the "Install the k3s binary" (which `k3s_install` automates) and "Start the Kubernetes control plane" sections of [this guide](https://www.guide2wsl.com/k3s/) to install `k3s` 
