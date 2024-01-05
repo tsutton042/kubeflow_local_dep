@@ -1,0 +1,24 @@
+#!/bin/bash
+
+K3S_VERSION="v1.29.0+k3s1"
+
+archSuffix=""
+if test "$(uname -m)" = "aarch64"
+then
+    archSuffix="-arm64"
+fi
+echo "Downloading binary"
+mkdir -p ~/.local/bin
+touch ~/.local/bin/k3s
+dl_url="https://github.com/k3s-io/k3s/releases/download/${K3S_VERSION}/k3s${archSuffix}"
+echo $dl_url
+wget $dl_url --spider && wget -q  $dl_url -O ~/.local/bin/k3s
+chmod u+x ~/.local/bin/k3s
+# test if the binary was installed correctly
+sudo ~/.local/bin/k3s --version
+
+# now add following aliases to .bashrc and restart terminal - do manually for safety
+echo
+echo "Add following aliases to .bashrc for ease of use:"
+echo "  alias k3s=\"~/.local/bin/k3s\""
+echo "  alias kubectl=\"~/.local/bin/k3s kubectl\""
