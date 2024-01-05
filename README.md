@@ -5,4 +5,5 @@ The repository was written following a combination of the "Install the k3s binar
 and the "Deploying Kubeflow Pipelines" section of the official [KF Local Deployment](https://www.kubeflow.org/docs/components/pipelines/v1/installation/localcluster-deployment/) guide. This combination allows you to have a local
 `k3s` install without recompiling the WSL kernel.
 
-It may be the case that restarting the KFP instance requires re-running parts of the guides. If this is the case, additional scripts will be added to this repo to automate these steps
+The script `kube_server` runs the kubeflow server (just automates alias resolving). Then, so you can access the server from the main device (ie outside of WSL),
+foward the port by running `kubectl port-forward -n kubeflow svc/ml-pipeline-ui 8080:80` in a seperate terminal (for whatever reason, this cannot be run from a script).
